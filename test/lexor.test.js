@@ -7,11 +7,11 @@ var Lexor = lexor.Lexor;
 
 describe("Lexor Library", function () {
   it("should expose its official API", function () {
-    var tokenizer = new Lexor();
-    expect(tokenizer).to.be.a("object");
-    expect(tokenizer).to.respondTo("input");
-    expect(tokenizer).to.respondTo("rule");
-    expect(tokenizer).to.respondTo("token");
+    var lexor = new Lexor();
+    expect(lexor).to.be.a("object");
+    expect(lexor).to.respondTo("input");
+    expect(lexor).to.respondTo("rule");
+    expect(lexor).to.respondTo("token");
   });
 
   it("should have the expected functionality", function () {
@@ -76,10 +76,10 @@ describe("Lexor Library", function () {
   });
 
   it("should throw error if not matched", function () {
-    var tokenizer = new Lexor();
-    tokenizer.input('hello');
+    var lexor = new Lexor();
+    lexor.input('hello');
     expect(function () {
-      tokenizer.tokens();
+      lexor.tokens();
     }).to.throw(lexor.ParsingError);
   });
 });
