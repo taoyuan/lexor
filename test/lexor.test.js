@@ -15,49 +15,49 @@ describe("Lexor Library", function () {
   });
 
   it("should have the expected functionality", function () {
-    var tokenizer = new Lexor();
-    tokenizer.rule("default", /[a-zA-Z]+/, function (ctx /*, m */) {
+    var lexor = new Lexor();
+    lexor.rule("default", /[a-zA-Z]+/, function (ctx /*, m */) {
       ctx.accept("symbol")
     });
 
-    tokenizer.rule("default", /[0-9]+/, function (ctx, m) {
+    lexor.rule("default", /[0-9]+/, function (ctx, m) {
       ctx.accept("number", parseInt(m[0]))
     });
 
-    tokenizer.rule("default", /"((?:\\"|[^\r\n]+)+)"/, function (ctx, m) {
+    lexor.rule("default", /"((?:\\"|[^\r\n]+)+)"/, function (ctx, m) {
       ctx.accept("string", m[1].replace(/\\"/g, "\""))
     });
 
-    tokenizer.rule("default", /\/\*/, function (ctx /*, m */) {
+    lexor.rule("default", /\/\*/, function (ctx /*, m */) {
       ctx.push("comment");
       ctx.tag("bar");
       ctx.ignore();
     });
 
-    tokenizer.rule("comment #foo #bar", /\*\//, function (/* ctx, m */) {
+    lexor.rule("comment #foo #bar", /\*\//, function (/* ctx, m */) {
       throw new Error("should never enter")
     });
 
-    tokenizer.rule("comment #bar", /\*\//, function (ctx /*, m */) {
+    lexor.rule("comment #bar", /\*\//, function (ctx /*, m */) {
       ctx.untag("bar");
       ctx.pop();
       ctx.ignore();
     });
 
-    tokenizer.rule("comment #bar", /./, function (ctx /*, m */) {
+    lexor.rule("comment #bar", /./, function (ctx /*, m */) {
       ctx.ignore();
     });
 
-    tokenizer.rule("default", /\s*,\s*/, function (ctx /*, m */) {
+    lexor.rule("default", /\s*,\s*/, function (ctx /*, m */) {
       ctx.ignore();
     });
 
-    tokenizer.input("foo42,\n \"bar baz\",\n quux/* */");
+    lexor.input("foo42,\n \"bar baz\",\n quux/* */");
 
-    tokenizer.debug(true);
+    lexor.debug(true);
     var tokens;
     try {
-      tokens = tokenizer.tokens();
+      tokens = lexor.tokens();
     } catch (ex) {
       console.log(ex.toString());
       throw ex;
