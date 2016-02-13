@@ -1,0 +1,52 @@
+{
+  "name": "lexor",
+  "version": "0.2.1",
+  "description": "A string lexer library for javascript",
+  "homepage": "",
+  "author": {
+    "name": "taoyuan",
+    "email": "torworx@gmail.com",
+    "url": ""
+  },
+  "main": "lib/index.js",
+  "keywords": [
+    "string",
+    "token",
+    "parse",
+    "parser",
+    "scanner",
+    "lexer",
+    "lexor"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint-config-xo-space": "^0.8.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-nsp": "^2.3.0",
+    "gulp-coveralls": "^0.1.4",
+    "mocha": "^2.4.5"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
+  },
+  "repository": "taoyuan/lexor",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT"
+}
