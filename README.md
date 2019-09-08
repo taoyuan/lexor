@@ -1,4 +1,7 @@
 # lexor 
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/taoyuan/lexor.svg)](https://greenkeeper.io/)
+
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > A string lexer library for javascript
 
